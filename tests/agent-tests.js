@@ -28,6 +28,10 @@ sandbox = sinon.createSandbox()
     AgentStub = {
         hasMany: sandbox.spy()
     }
+
+    AgentStub.findById =sandbox.stub()
+    AgentStub.findById.withArgs(id).returns(Promise.resolve(agentFixtures.byId(id)))
+
   const setupDatabase = proxyquire('../',{
     './pVerse-db/models/agent':()=>AgentStub,
     './pVerse-db/models/metric':()=>MetricStub
