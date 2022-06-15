@@ -58,3 +58,9 @@ test.serial('Agent#findById',async t=>{
     let agent = await db.Agent.findById(id)
     t.deepEqual(agent,agentFixtures.byId(id),'should be the same')
 })
+
+test.serial('Agent#createOrUpdate', async t =>{
+  let agent = await db.Agent.createOrUpdate(single)
+
+  t.deepEqual(agent,single,'Agent should be the same')
+})
