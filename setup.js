@@ -5,21 +5,20 @@ const debug = require('debug')('pverse:db')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 
-
 const prompt = inquirer.createPromptModule()
 
 async function setup () {
-    const answer = await prompt([
-        {
-            type:'confirm',
-            name:'setup',
-            message:'This will destroy your database, are you sure?'
-        }
-    ])
-
-    if(!answer.setup){
-        return console.log('Nothing happened :)')
+  const answer = await prompt([
+    {
+      type: 'confirm',
+      name: 'setup',
+      message: 'This will destroy your database, are you sure?'
     }
+  ])
+
+  if (!answer.setup) {
+    return console.log('Nothing happened :)')
+  }
 
   const config = {
     database: process.env.DB_NAME || 'pverse',
